@@ -202,13 +202,36 @@ Downstream Debian like implementation.
   * Details: https://lists.gnu.org/archive/html/grub-devel/2023-10/msg00028.html, SBAT increase to 4
   * CVE-2023-4693
   * CVE-2023-4692
+* February 2025
+  * Details: https://lists.gnu.org/archive/html/grub-devel/2025-02/msg00024.html, SBAT increase to 5
+  * CVE-2024-45774
+  * CVE-2024-45775
+  * CVE-2024-45776
+  * CVE-2024-45777
+  * CVE-2024-45778
+  * CVE-2024-45779
+  * CVE-2024-45780
+  * CVE-2024-45781
+  * CVE-2024-45782
+  * CVE-2024-45783
+  * CVE-2025-0622
+  * CVE-2025-0624
+  * CVE-2025-0677
+  * CVE-2025-0678
+  * CVE-2025-0684
+  * CVE-2025-0685
+  * CVE-2025-0686
+  * CVE-2025-0689
+  * CVE-2025-0690
+  * CVE-2025-1118
+  * CVE-2025-1125
 *******************************************************************************
 Yes, our grub2 is built from Debian 13 source code, sbat generation is 5.
 
 *******************************************************************************
-### If shim is loading GRUB2 bootloader, and if these fixes have been applied, is the upstream global SBAT generation in your GRUB2 binary set to 4?
+### If shim is loading GRUB2 bootloader, and if these fixes have been applied, is the upstream global SBAT generation in your GRUB2 binary set to 5?
 Skip this, if you're not using GRUB2, otherwise do you have an entry in your GRUB2 binary similar to:  
-`grub,4,Free Software Foundation,grub,GRUB_UPSTREAM_VERSION,https://www.gnu.org/software/grub/`?
+`grub,5,Free Software Foundation,grub,GRUB_UPSTREAM_VERSION,https://www.gnu.org/software/grub/`?
 *******************************************************************************
 grub,5,Free Software Foundation,grub,2.12,https//www.gnu.org/software/grub/
 
@@ -230,8 +253,7 @@ If you are shipping an older kernel, double-check your sources; maybe you do not
 Yes, all mentioned upstream commits above are applied.
 
 *******************************************************************************
-### How does your signed kernel enforce lockdown when your system runs
-### with Secure Boot enabled?
+### How does your signed kernel enforce lockdown when your system runs with Secure Boot enabled?
 Hint: If it does not, we are not likely to sign your shim.
 *******************************************************************************
 The PC-Doctor kernel is built with CONFIG_LOCK_DOWN_KERNEL_FORCE_INTEGRITY, CONFIG_MODULE_SIG, and CONFIG_MODULE_SIG_FORCE. All of the kernel modules are signed with generated ephemeral keys.
@@ -324,7 +346,7 @@ If you are using a downstream implementation of GRUB2 (e.g. from Fedora or Debia
 
 **Remember to post the entries of all the binaries. Apart from your bootloader, you may also be shipping e.g. a firmware updater, which will also have these.**
 
-Hint: run `objcopy --only-section .sbat -O binary YOUR_EFI_BINARY /dev/stdout` to get these entries. Paste them here. Preferably surround each listing with three backticks (\`\`\`), so they render well.
+Hint: run `objcopy --dump-section .sbat=/dev/stdout YOUR_EFI_BINARY` to get these entries. Paste them here. Preferably surround each listing with three backticks (\`\`\`), so they render well.
 *******************************************************************************
 sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
 shim,4,UEFI shim,shim,1,https://github.com/rhboot/shim
