@@ -335,7 +335,7 @@ if _yes_: does that certificate include the X509v3 Basic Constraints
 to say that it is a CA? See the [docs](./docs/) for more guidance
 about this.
 *******************************************************************************
-Yes and yes, it has CA:TRUE.
+No
 
 *******************************************************************************
 ### Do you add a vendor-specific SBAT entry to the SBAT section in each binary that supports SBAT metadata ( GRUB2, fwupd, fwupdate, systemd-boot, systemd-stub, shim + all child shim binaries )?
@@ -348,16 +348,17 @@ If you are using a downstream implementation of GRUB2 (e.g. from Fedora or Debia
 
 Hint: run `objcopy --dump-section .sbat=/dev/stdout YOUR_EFI_BINARY` to get these entries. Paste them here. Preferably surround each listing with three backticks (\`\`\`), so they render well.
 *******************************************************************************
+```
 sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
 shim,4,UEFI shim,shim,1,https://github.com/rhboot/shim
-shim.pcd,1,PC-Doctor,shim,16.1,mail:paul@pc-doctor.com
+shim.pcdoctor,1,PC-Doctor,shim,16.1,mail:paul@pc-doctor.com
 
 sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
 grub,5,Free Software Foundation,grub,2.12,https//www.gnu.org/software/grub/
 grub.debian,5,Debian,grub2,2.12-9,https://tracker.debian.org/pkg/grub2
 grub.debian13,1,Debian,grub2,2.12-9,https://tracker.debian.org/pkg/grub2
-grub.pcd,1,PC-Doctor,grub2,2.12-9,mail:paul@pc-doctor.com
-
+grub.pcdoctor,1,PC-Doctor,grub2,2.12-9,mail:paul@pc-doctor.com
+```
 *******************************************************************************
 ### If shim is loading GRUB2 bootloader, which modules are built into your signed GRUB2 image?
 Skip this, if you're not using GRUB2.
@@ -366,13 +367,13 @@ Hint: this is about those modules that are in the binary itself, not the `.mod` 
 *******************************************************************************
 Common:	 all_video boot btrfs cat chain configfile echo efifwsetup efinet ext2 fat font f2fs gettext gfxmenu gfxterm gfxterm_background gzio halt help hfsplus iso9660 jfs jpeg keystatus loadenv loopback linux ls lsefi lsefimmap lsefisystab lssal memdisk minicmd normal ntfs part_apple part_msdos part_gpt password_pbkdf2 peimage png probe reboot regexp search search_fs_uuid search_fs_file search_label serial sleep smbios squash4 test tpm true video xfs zfs zfscrypt zfsinfo cpuid play cryptodisk gcry_arcfour gcry_blowfish gcry_camellia gcry_cast5 gcry_crc gcry_des gcry_dsa gcry_idea gcry_md4 gcry_md5 gcry_rfc2268 gcry_rijndael gcry_rmd160 gcry_rsa gcry_seed gcry_serpent gcry_sha1 gcry_sha256 gcry_sha512 gcry_tiger gcry_twofish gcry_whirlpool luks luks2 lvm mdraid09 mdraid1x raid5rec raid6rec
 
-x64-specific: cupid play
+x64-specific: cpuid play
 arm64-specific: fdt
 
 *******************************************************************************
 ### If you are using systemd-boot on arm64 or riscv, is the fix for [unverified Devicetree Blob loading](https://github.com/systemd/systemd/security/advisories/GHSA-6m6p-rjcq-334c) included?
 *******************************************************************************
-Yes, we will support arm64. We are using a systemd version which has this patched applied.
+No
 
 *******************************************************************************
 ### What is the origin and full version number of your bootloader (GRUB2 or systemd-boot or other)?
