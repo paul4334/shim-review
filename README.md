@@ -357,6 +357,7 @@ sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
 grub,5,Free Software Foundation,grub,2.12,https://www.gnu.org/software/grub/
 grub.debian,5,Debian,grub2,2.12-9,https://tracker.debian.org/pkg/grub2
 grub.debian13,1,Debian,grub2,2.12-9,https://tracker.debian.org/pkg/grub2
+grub.peimage,2,Canonical,grub2,2.12-9,https://salsa.debian.org/grub-team/grub/-/blob/master/debian/patches/secure-boot/efi-use-peimage-shim.patch
 grub.pcdoctor,1,PC-Doctor,grub2,2.12-9,mail:paul@pc-doctor.com
 ```
 *******************************************************************************
