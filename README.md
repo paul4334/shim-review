@@ -313,8 +313,8 @@ N/A, this is our first application to the review board.
 *******************************************************************************
 ### What is the SHA256 hash of your final shim binary?
 *******************************************************************************
-26df40d310a4e59854a114a1888a3798ff73e7457a34731a3ba193cd0b6a3c36  build-x64/shimx64.efi
-4bd8fa63ac4055d0e1311191592eed85ac93950864d4a678b635e83da8844be5  build-aarch64/shimaa64.efi
+c3c662e4c02f246da7e455b279f4faf3f76b719adce23709e6aaeb8537e7cb58  build-x64/shimx64.efi
+605bb56a060e5c090407fb3df8f3353b719fd74dbfc2dcb67867ef9f277a7ace  build-aarch64/shimaa64.efi
 
 *******************************************************************************
 ### How do you manage and protect the keys used in your shim?
