@@ -354,7 +354,7 @@ shim,4,UEFI shim,shim,1,https://github.com/rhboot/shim
 shim.pcdoctor,1,PC-Doctor,shim,16.1,mail:paul@pc-doctor.com
 
 sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
-grub,5,Free Software Foundation,grub,2.12,https//www.gnu.org/software/grub/
+grub,5,Free Software Foundation,grub,2.12,https://www.gnu.org/software/grub/
 grub.debian,5,Debian,grub2,2.12-9,https://tracker.debian.org/pkg/grub2
 grub.debian13,1,Debian,grub2,2.12-9,https://tracker.debian.org/pkg/grub2
 grub.pcdoctor,1,PC-Doctor,grub2,2.12-9,mail:paul@pc-doctor.com
