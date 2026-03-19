@@ -256,7 +256,19 @@ Yes, all mentioned upstream commits above are applied.
 ### How does your signed kernel enforce lockdown when your system runs with Secure Boot enabled?
 Hint: If it does not, we are not likely to sign your shim.
 *******************************************************************************
-The PC-Doctor kernel is built with CONFIG_LOCK_DOWN_KERNEL_FORCE_INTEGRITY, CONFIG_MODULE_SIG, and CONFIG_MODULE_SIG_FORCE. All of the kernel modules are signed with generated ephemeral keys.
+The PC-Doctor kernel enforces lockdown by utilizing the kernel lockdown feature, which is enabled when Secure Boot is active.
+
+Lockdown options that are configured in the kernel:
+
+```
+CONFIG_LOCK_DOWN_KERNEL_FORCE_INTEGRITY=y
+CONFIG_LOCK_DOWN_IN_EFI_SECURE_BOOT=y
+CONFIG_SECURITY_LOCKDOWN_LSM=y
+CONFIG_SECURITY_LOCKDOWN_LSM_EARLY=y
+CONFIG_LSM="landlock,lockdown,yama,loadpin,safesetid,integrity,apparmor,selinux,smack,tomoyo,bpf,ipe"
+```
+
+In addition, the PC-Doctor kernel is configured with CONFIG_MODULE_SIG, and CONFIG_MODULE_SIG_FORCE. All of the kernel modules are signed with generated ephemeral keys.
 
 When the system is booted with Secure Boot enabled, the PC-Doctor kernel will enforce lockdown and prevent the loading of unsigned kernel modules or modules with invalid signatures.
 
@@ -366,7 +378,7 @@ Skip this, if you're not using GRUB2.
 
 Hint: this is about those modules that are in the binary itself, not the `.mod` files in your filesystem.
 *******************************************************************************
-Common:	 all_video boot btrfs cat chain configfile echo efifwsetup efinet ext2 fat font f2fs gettext gfxmenu gfxterm gfxterm_background gzio halt help hfsplus iso9660 jfs jpeg keystatus loadenv loopback linux ls lsefi lsefimmap lsefisystab lssal memdisk minicmd normal ntfs part_apple part_msdos part_gpt password_pbkdf2 peimage png probe reboot regexp search search_fs_uuid search_fs_file search_label serial sleep smbios squash4 test tpm true video xfs zfs zfscrypt zfsinfo cpuid play cryptodisk gcry_arcfour gcry_blowfish gcry_camellia gcry_cast5 gcry_crc gcry_des gcry_dsa gcry_idea gcry_md4 gcry_md5 gcry_rfc2268 gcry_rijndael gcry_rmd160 gcry_rsa gcry_seed gcry_serpent gcry_sha1 gcry_sha256 gcry_sha512 gcry_tiger gcry_twofish gcry_whirlpool luks luks2 lvm mdraid09 mdraid1x raid5rec raid6rec
+Common:	 all_video boot btrfs cat chain configfile echo efifwsetup efinet ext2 fat font f2fs gettext gfxmenu gfxterm gfxterm_background gzio halt help hfsplus iso9660 jfs jpeg keystatus loadenv loopback linux ls lsefi lsefimmap lsefisystab lssal memdisk minicmd normal ntfs part_apple part_msdos part_gpt password_pbkdf2 peimage png probe reboot regexp search search_fs_uuid search_fs_file search_label serial sleep smbios squash4 test tpm true video xfs zfs zfscrypt zfsinfo play cryptodisk gcry_arcfour gcry_blowfish gcry_camellia gcry_cast5 gcry_crc gcry_des gcry_dsa gcry_idea gcry_md4 gcry_md5 gcry_rfc2268 gcry_rijndael gcry_rmd160 gcry_rsa gcry_seed gcry_serpent gcry_sha1 gcry_sha256 gcry_sha512 gcry_tiger gcry_twofish gcry_whirlpool luks luks2 lvm mdraid09 mdraid1x raid5rec raid6rec
 
 x64-specific: cpuid play
 arm64-specific: fdt
